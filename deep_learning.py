@@ -183,15 +183,7 @@ print("Model loaded:", model)
 print("Train X shape:", train_X.shape)
 print("Train y shape:", train_y.shape)
 
-"""## Create a meshgrid
-
-### Subtask:
-Generate a meshgrid of points that covers the range of your data's features.
-
-**Reasoning**:
-Determine the range of the features and create a meshgrid for visualization.
-"""
-
+"
 import numpy as np
 
 # Determine the minimum and maximum values for each feature
@@ -204,14 +196,6 @@ xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1),
 
 print("Meshgrid shapes:", xx.shape, yy.shape)
 
-"""## Predict on the meshgrid
-
-### Subtask:
-Use the trained model to predict the class label for each point in the meshgrid.
-
-**Reasoning**:
-Flatten the meshgrid arrays, combine them into a single array, and use the trained model to predict the class for each point.
-"""
 
 # Flatten the meshgrid arrays
 xx_flat = xx.ravel()
@@ -226,14 +210,6 @@ Z = model.predict(meshgrid_points)
 print("Shape of meshgrid points for prediction:", meshgrid_points.shape)
 print("Shape of predictions:", Z.shape)
 
-"""## Visualize the decision boundary
-
-### Subtask:
-Plot the meshgrid predictions as a background color map and overlay the original training data points, colored by their true labels.
-
-**Reasoning**:
-Plot the decision boundary using the meshgrid predictions and overlay the original training data points.
-"""
 
 import matplotlib.pyplot as plt
 
@@ -251,22 +227,13 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-"""## Add labels and title
-
-### Subtask:
-Add appropriate labels to the axes and a title to the plot for clarity.
-
-## Summary:
-
-### Data Analysis Key Findings
+ Data Analysis Key Findings
 
 *   The trained MLP model and the training data (features and labels) were successfully loaded. The training features `train_X` have a shape of (2000, 2), and the training labels `train_y` have a shape of (2000,).
 *   A meshgrid covering the range of the training data's features was successfully created using `numpy.meshgrid`. The resulting meshgrid arrays `xx` and `yy` have shapes of (275, 335).
 *   The trained model successfully predicted the class labels for the meshgrid points. The predictions, stored in `Z`, have a shape of (92125,).
 *   The decision boundary of the trained MLP model was visualized using a contour plot of the meshgrid predictions. The original training data points were overlaid on the plot and colored according to their true labels.
 *   The plot was titled "MLP Decision Boundary on Training Data" and the axes were labeled "Feature 1" and "Feature 2".
-
-### Insights or Next Steps
 
 *   The visualization clearly shows how the MLP model has learned to separate the different classes within the feature space.
 *   A next step could be to visualize the decision boundary on a separate test dataset to evaluate the model's generalization performance.
